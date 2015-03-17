@@ -12,15 +12,19 @@
 			$this->load->helper('security');
 //			$this->load->library('form_validation');
 			$this->load->library('session');
-//			$this->load->model('login_database');
+			$this->load->model('load_file');
 		}
 
 		public function home_admin()
 		{
+// Load the file, and extract it on the database
+			$file = $this->load_file->load_data_file();
+
+
 
 			$data = array(
 				'name' => 'Admin',
-				'link' => 'home_admin'
+				'file' => $file
 				);
 			
 // Check if user is logged
