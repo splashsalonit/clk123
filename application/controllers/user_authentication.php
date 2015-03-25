@@ -13,6 +13,7 @@
 			$this->load->library('form_validation');
 			$this->load->library('session');
 			$this->load->model('login_database');
+			$this->load->model('load_file');
 		}
 //show login page
 		public function user_login_show()
@@ -88,11 +89,18 @@
 
 					if ($result != FALSE)
 					{
+						$clerks = $this->load_file->get_clerks();
+						$locations = $this->load_file->get_data_extend('locations', 'locations');
+
+// prepere the data to sent to the admin page
 						$data = array(
 							'name' => $result[0]->name,
 							'username' => $result[0]->user_name,
 							'email' => $result[0]->user_email,
-							'password' => $result[0]->user_password
+							'password' => $result[0]->user_password,
+							'file' => $clerks,
+							'locations' => $locations,
+							'message_display' => 'Loged in Successfully! ;)'
 							);
 
 						if ($data['name'] == 'Admin')
@@ -125,5 +133,4 @@
 			$this->load->view('login_form', $data);
 		}
 	}
-	//test word
 ?>

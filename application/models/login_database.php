@@ -25,11 +25,11 @@ Class Login_Database extends CI_Model
 
 			if ($this->db->affected_rows() > 0)
 			{
-				return true;
+				return TRUE;
 			}
 			else
 			{
-				return false;
+				return FALSE;
 			}
 		}
 	}
@@ -53,6 +53,19 @@ Class Login_Database extends CI_Model
 			return FALSE;
 		}
 	}
+
+	public function is_logged()
+	{
+		if ($this->session->userdata('logged_in') == TRUE)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
 
 //read data from database to show data in admin page
 	public function read_user_information($sess_array)

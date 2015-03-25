@@ -2,6 +2,18 @@
 <head>
 	<title><?php echo $name . ' Page'; ?></title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+
+<!-- the following script it will go in a seperate file later -->
+	<script type="text/javascript">
+	    function goToNewPage()
+	    {
+	        var url = document.getElementById('locations').value;
+	        
+	        if(url != 'none') {
+	            window.location = url;
+	        }
+	    }
+	</script>
 </head>
 <body>
 	<?php
@@ -18,8 +30,7 @@
 				if ($name == 'Admin')
 				{
 					echo '<a href="' . base_url('index.php/main/home_admin') . '">Home</a>';
-					echo '<a href="' . base_url('index.php/main/edit_admin') . '">Add - Edit Rota</a>';
-
+					echo '<a href="' . base_url('index.php/main/soho') . '">Soho</a>';
 				} 
 				else 
 				{
@@ -30,9 +41,6 @@
 
 				echo '<a href="' . base_url('index.php/user_authentication/logout') . '">Logout</a>'; 
 			?>
-		</nav>
-
-		<h3><?php echo 'Welcome to ' . $name . ' Page<br>';?></h3>
-		
+		</nav>		
 	</div>
 
